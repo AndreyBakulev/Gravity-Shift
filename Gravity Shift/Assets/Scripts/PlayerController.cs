@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;
         GravityManager.Instance.ResetGravity();
+        Debug.Log("Player Died!");
     }
     public void SetSpawnPoint(Vector3 pos) { startPosition = pos; }
     void OnDrawGizmos()
