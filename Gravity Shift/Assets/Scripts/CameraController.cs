@@ -32,6 +32,7 @@ public class CameraController : MonoBehaviour
             float newZ = Mathf.Lerp(current, targetRotation,
                             Time.deltaTime * rotationSpeed);
             transform.rotation = Quaternion.Euler(0, 0, newZ);
+            //this took me so long omg 
         }
     }
     public void SetRotationEnabled(bool enabled)
