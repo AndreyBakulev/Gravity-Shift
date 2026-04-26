@@ -16,8 +16,8 @@ public class GravityManager : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q)) RotateGravity(1);
-        if (Input.GetKeyDown(KeyCode.E)) RotateGravity(-1);
+        if (Input.GetKeyDown(KeyCode.Q)) RotateGravity(-1);
+        if (Input.GetKeyDown(KeyCode.E)) RotateGravity(1);
     }
     void RotateGravity(int direction)
     {
@@ -28,10 +28,10 @@ public class GravityManager : MonoBehaviour
     {
         switch (currentDirection)
         {
-            case 0: Physics2D.gravity = new Vector2(0, -gravityMagnitude); break;
-            case 1: Physics2D.gravity = new Vector2(-gravityMagnitude, 0); break;
-            case 2: Physics2D.gravity = new Vector2(0, gravityMagnitude); break;
-            case 3: Physics2D.gravity = new Vector2( gravityMagnitude, 0); break;
+            case 0: Physics2D.gravity = new Vector2(0, -gravityMagnitude); break; //down
+            case 1: Physics2D.gravity = new Vector2(gravityMagnitude, 0); break; //right
+            case 2: Physics2D.gravity = new Vector2(0, gravityMagnitude); break;  //up
+            case 3: Physics2D.gravity = new Vector2(-gravityMagnitude, 0); break;  //left
         }
     }
     // Called by PlayerController.Die() to reset gravity to default
