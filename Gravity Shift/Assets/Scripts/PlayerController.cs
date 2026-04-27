@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.jumpClip);
             Vector2 jumpDir = -Physics2D.gravity.normalized;
             rb.linearVelocity = Vector2.zero;
             rb.AddForce(jumpDir * jumpForce, ForceMode2D.Impulse);
@@ -88,6 +89,7 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         GameData.deathCount++;
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.deathClip);
         transform.position = startPosition;
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;

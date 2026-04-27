@@ -39,6 +39,7 @@ public class GravityManager : MonoBehaviour
     {
         currentDirection = (currentDirection + direction + 4) % 4;
         ApplyGravity();
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.gravityRotateClip);
     }
 
     void ApplyGravity()

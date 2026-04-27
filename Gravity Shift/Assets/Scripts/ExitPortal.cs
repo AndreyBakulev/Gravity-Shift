@@ -7,6 +7,7 @@ public class ExitPortal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.portalClip);
             SceneManager.LoadScene(nextSceneName);
         }
     }

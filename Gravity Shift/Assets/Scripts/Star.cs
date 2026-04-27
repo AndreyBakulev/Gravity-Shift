@@ -7,6 +7,7 @@ public class Star : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GameData.starsCollected++;
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.starCollectClip);
             Destroy(gameObject);
         }
     }
