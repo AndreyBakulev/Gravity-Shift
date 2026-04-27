@@ -2100,6 +2100,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1357338145867889890, guid: 5b8e5904d34a241a3a5eb191fcf8b41b, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1357338145867889890, guid: 5b8e5904d34a241a3a5eb191fcf8b41b, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.046902817
+      objectReference: {fileID: 0}
+    - target: {fileID: 1357338145867889890, guid: 5b8e5904d34a241a3a5eb191fcf8b41b, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.34747872
+      objectReference: {fileID: 0}
+    - target: {fileID: 1357338145867889890, guid: 5b8e5904d34a241a3a5eb191fcf8b41b, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.5849056
+      objectReference: {fileID: 0}
     - target: {fileID: 1412029363479620834, guid: 5b8e5904d34a241a3a5eb191fcf8b41b, type: 3}
       propertyPath: player
       value: 
