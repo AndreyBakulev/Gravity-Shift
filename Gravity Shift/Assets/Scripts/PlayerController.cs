@@ -85,15 +85,14 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(jumpDir * jumpForce, ForceMode2D.Impulse);
         }
     }
-
     public void Die()
     {
+        GameData.deathCount++;
         transform.position = startPosition;
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;
         GravityManager.Instance.ResetGravity();
     }
-
     public void SetSpawnPoint(Vector3 pos)
     {
         startPosition = pos;
