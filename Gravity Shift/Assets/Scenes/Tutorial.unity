@@ -581,7 +581,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1158735848741588731, guid: 384660a05c7d84176854b2857c00c0d7, type: 3}
       propertyPath: nextSceneName
-      value: Chamber1
+      value: TitleScreen
       objectReference: {fileID: 0}
     - target: {fileID: 3013066217564245829, guid: 384660a05c7d84176854b2857c00c0d7, type: 3}
       propertyPath: m_LocalScale.y
