@@ -1813,6 +1813,14 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: -29575547011763256, guid: 1db31ea5a3610498d843c3e28a2fc2aa, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: c2d3c1f65ec1b4746837ad1464c5beb4, type: 2}
+    - target: {fileID: 1066403350504574241, guid: 1db31ea5a3610498d843c3e28a2fc2aa, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 03942e4d5e7b8934697a20190b6af978, type: 2}
     - target: {fileID: 4073351634116992564, guid: 1db31ea5a3610498d843c3e28a2fc2aa, type: 3}
       propertyPath: m_Name
       value: GameManager

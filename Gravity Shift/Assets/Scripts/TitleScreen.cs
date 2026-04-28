@@ -4,14 +4,17 @@ using UnityEngine.SceneManagement;
 public class TitleScreen : MonoBehaviour
 {
     public GameObject howToPlayPanel;
+    public GameObject settingsPanel;
 
     public void PlayGame()
     {
+        GameData.ResetAll();
         SceneManager.LoadScene("Chamber1");
     }
 
     public void GoToTutorial()
     {
+        GameData.ResetAll();
         SceneManager.LoadScene("Tutorial");
     }
 
@@ -31,5 +34,15 @@ public class TitleScreen : MonoBehaviour
     public void HideHowToPlay()
     {
         howToPlayPanel.SetActive(false);
+    }
+
+    public void ShowSettings()
+    {
+        settingsPanel.SetActive(true);
+    }
+
+    public void HideSettings()
+    {
+        settingsPanel.SetActive(false);
     }
 }
