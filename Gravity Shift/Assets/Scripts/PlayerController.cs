@@ -2,9 +2,9 @@ using UnityEngine;
 /*NOTE:
 Directions:
 0 = down
-1 = left
+1 = right
 2 = up
-3 = right
+3 = left
 */
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
     private Vector3 startPosition;
+    private bool isDead = false;
 
     void Start()
     {
@@ -37,13 +38,13 @@ public class PlayerController : MonoBehaviour
             case 0: // Gravity down - check below
                 groundCheckOffset = new Vector2(0, -0.4f);
                 break;
-            case 1: // Gravity right - check to the left
+            case 1: // Gravity right - check to the right
                 groundCheckOffset = new Vector2(0.4f, 0);
                 break;
             case 2: // Gravity up - check above
                 groundCheckOffset = new Vector2(0, 0.4f);
                 break;
-            case 3: // Gravity left - check to the right
+            case 3: // Gravity left - check to the left
                 groundCheckOffset = new Vector2(-0.4f, 0);
                 break;
             default:
@@ -72,12 +73,6 @@ public class PlayerController : MonoBehaviour
                 break;
         }
 
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //Debug.Log("Space pressed. isGrounded: " + isGrounded);
-            //Debug.Log("Check position: " + checkPosition);
-        } */
-
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             AudioManager.Instance.PlaySFX(AudioManager.Instance.jumpClip);
@@ -86,31 +81,45 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(jumpDir * jumpForce, ForceMode2D.Impulse);
         }
     }
+
     public void Die()
     {
+        // Prevent Die() from firing twice in quick succession
+        if (isDead) return;
+        isDead = true;
+
         GameData.deathCount++;
         AudioManager.Instance.PlaySFX(AudioManager.Instance.deathClip);
         transform.position = startPosition;
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;
         GravityManager.Instance.ResetGravity();
+
+        // Allow death again after 0.3 seconds
+        Invoke("ResetDeath", 0.3f);
     }
+
+    private void ResetDeath()
+    {
+        isDead = false;
+    }
+
     public void SetSpawnPoint(Vector3 pos)
     {
         startPosition = pos;
     }
 
-    void OnDrawGizmos() //draws gizmo to check for isGrounded based off gravDir
+    void OnDrawGizmos()
     {
         int gravDir = GravityManager.Instance != null ? 
                       GravityManager.Instance.GetCurrentDirection() : 0;
         Vector2 offset;
         switch (gravDir)
         {
-            case 1: offset = new Vector2(0.4f, 0); break; //right
-            case 2: offset = new Vector2(0, 0.4f);  break; //up
-            case 3: offset = new Vector2(-0.4f, 0);  break; //left
-            default: offset = new Vector2(0, -0.4f); break; //default = down
+            case 1: offset = new Vector2(0.4f, 0);  break; // right
+            case 2: offset = new Vector2(0, 0.4f);  break; // up
+            case 3: offset = new Vector2(-0.4f, 0); break; // left
+            default: offset = new Vector2(0, -0.4f); break; // down
         }
         Gizmos.color = isGrounded ? Color.green : Color.red;
         Gizmos.DrawWireSphere((Vector2)transform.position + offset, groundCheckRadius);
